@@ -18,21 +18,15 @@ public class DemoController {
 	@RequestMapping("/path")
     public Response getPath() {
     	
-    	try {
-			Thread.sleep(4000);
+		try {
+			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-		}
+		}    		
     	
     	for (int i=0; i<10000; i++) {
-    		
-    		Thread t = new Thread(new Runnable() {
-				@Override
-				public void run() {
-					File f = new File("test-" + UUID.randomUUID().toString() + ".txt" );
-				} 
-    		});
-    		t.start();
+    		File f = new File("input-" + UUID.randomUUID().toString() + ".txt");
+
     	}
     	
     	
