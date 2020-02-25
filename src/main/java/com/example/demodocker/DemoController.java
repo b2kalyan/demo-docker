@@ -1,6 +1,7 @@
 package com.example.demodocker;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.UUID;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,8 +25,13 @@ public class DemoController {
 			e.printStackTrace();
 		}    		
     	
-    	for (int i=0; i<10000; i++) {
+    	for (int i=0; i<10; i++) {
     		File f = new File("input-" + UUID.randomUUID().toString() + ".txt");
+    		try {
+				f.createNewFile();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 
     	}
     	
