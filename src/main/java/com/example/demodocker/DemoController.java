@@ -1,7 +1,5 @@
 package com.example.demodocker;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,29 +11,21 @@ public class DemoController
 {
 	public static String ROOT_PATH = "/var/ftp/application/pub/";
 	
-    @RequestMapping("/")
-    public List<Customer> findAll()
+    @RequestMapping("/")    
+    public String home()
     {
-        List<Customer> customerList = new ArrayList<Customer>();
-        customerList.add(new Customer(1, "frank"));
-        customerList.add(new Customer(2, "john"));
-        return customerList;
+    	return "Hello! This is a docker demo on openshift";
     }
     
     @RequestMapping("/path")
     public Response getPath() {
     	
     	try {
-			Thread.sleep(400);
+			Thread.sleep(4000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
     	
     	return new Response(ROOT_PATH + UUID.randomUUID().toString());
-    }
-    
-    @RequestMapping("/healthz")
-    public String getHealth() {
-    	return "Ok";
     }
 }
